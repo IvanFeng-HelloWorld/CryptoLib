@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/方案項目/">
+    <File Path=".github/instruction.md" />
     <File Path="agent.md" />
   </Folder>
   <Project Path="CryptoLib/CryptoLib.csproj" />
