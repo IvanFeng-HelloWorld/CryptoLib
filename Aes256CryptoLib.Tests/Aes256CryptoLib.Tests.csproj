@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Aes256CryptoLib\Aes256CryptoLib.csproj" />
     <ProjectReference Include="..\CryptoLib\Aes256CryptoLib.csproj" />
   </ItemGroup>
 
