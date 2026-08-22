@@ -1,9 +1,9 @@
-namespace CryptoLib;
+namespace Aes256CryptoLib;
 
 /// <summary>
 /// AES-256 加解密服務介面
 /// </summary>
-public interface IAesCryptoService
+public interface IAes256CryptoService
 {
     /// <summary>
     /// 將明文字串進行 AES-256 加密

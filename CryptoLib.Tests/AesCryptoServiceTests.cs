@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System;
 
-namespace CryptoLib.Tests;
+namespace Aes256CryptoLib.Tests;
 
 [TestFixture]
 public class Given_AesCryptoService
@@ -13,7 +13,7 @@ public class Given_AesCryptoService
     public void Given_ValidPlainText_When_EncryptedAndDecrypted_Then_ReturnsOriginal()
     {
         // Given
-        var service = new AesCryptoService(TestKey, TestIv);
+        var service = new Aes256CryptoService(TestKey, TestIv);
         var plain = "secret-api-key-123";
 
         // When
@@ -30,7 +30,7 @@ public class Given_AesCryptoService
     public void Given_InvalidBase64_When_Decrypt_Then_ReturnsOriginalAndNotThrow()
     {
         // Given
-        var service = new AesCryptoService(TestKey, TestIv);
+        var service = new Aes256CryptoService(TestKey, TestIv);
         var input = "not-a-base64@@@";
 
         // When
@@ -45,7 +45,7 @@ public class Given_AesCryptoService
     [Test]
     public void Given_NullOrEmpty_When_EncryptOrDecrypt_Then_ReturnsSame()
     {
-        var service = new AesCryptoService(TestKey, TestIv);
+        var service = new Aes256CryptoService(TestKey, TestIv);
 
         Assert.AreEqual(null, service.Encrypt(null!));
         Assert.AreEqual(string.Empty, service.Encrypt(string.Empty));

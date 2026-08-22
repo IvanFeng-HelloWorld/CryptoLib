@@ -2,13 +2,13 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CryptoLib;
+namespace Aes256CryptoLib;
 
 /// <summary>
 /// AES-256/CBC/PKCS7 加解密實作。
 /// 注意：預設使用 private static 欄位作為 key/iv 的 placeholder。請在編譯前以安全方式替換為實際值。
 /// </summary>
-public class AesCryptoService : IAesCryptoService
+public class Aes256CryptoService : IAes256CryptoService
 {
     // TODO: 請在打包為 DLL 前，將下列預設值替換為專案專屬的 Key 與 IV。為安全起見，不應將實際金鑰上傳到原始碼倉庫。
     private static readonly string DefaultKeyString = "REPLACE_WITH_32_BYTE_KEY________________"; // 32 chars placeholder
@@ -21,7 +21,7 @@ public class AesCryptoService : IAesCryptoService
     /// <summary>
     /// 預設建構式：使用類別內靜態預設 Key/IV（請在專案中替換）
     /// </summary>
-    public AesCryptoService()
+    public Aes256CryptoService()
     {
         _keyBytes = GetBytesOrNull(DefaultKeyString);
         _ivBytes = GetBytesOrNull(DefaultIVString);
@@ -31,7 +31,7 @@ public class AesCryptoService : IAesCryptoService
     /// 可選的建構式：允許注入 key/iv 字串以利測試或特殊使用情境。
     /// 接受"單純的字串"（使用 UTF8 bytes），呼叫端需確保長度符合規範。
     /// </summary>
-    public AesCryptoService(string keyString, string ivString)
+    public Aes256CryptoService(string keyString, string ivString)
     {
         _keyBytes = GetBytesOrNull(keyString);
         _ivBytes = GetBytesOrNull(ivString);

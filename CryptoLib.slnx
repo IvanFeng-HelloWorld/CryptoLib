@@ -7,6 +7,6 @@
     <File Path="agent.md" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="CryptoLib.Tests/CryptoLib.Tests.csproj" />
-  <Project Path="CryptoLib/CryptoLib.csproj" />
+  <Project Path="CryptoLib.Tests/Aes256CryptoLib.Tests.csproj" />
+  <Project Path="CryptoLib/Aes256CryptoLib.csproj" />
 </Solution>
