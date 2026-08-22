@@ -134,13 +134,35 @@ public interface IAesCryptoService
 ## AI 交談紀錄
 **以下為與AI討論區塊**
 ```
-範例:
-AI: 以下為需確認的設計選項，請在此檔案內直接回覆（輸入選項編號或文字）。回覆後我會根據選擇產出實作規劃與要修改的檔案清單。
-1) Key / IV 的設定方式（擇一或多選）
+AI: 以下為需確認的設計選項，請在此檔案內直接回覆（在本區塊回答選項編號或文字）。回覆後我會根據選擇產出實作計畫與要修改的檔案清單。
+
+1) Key / IV 的設定方式（可複選）
    - a) 建構式 (於實例化時傳入)
    - b) 提供屬性或 SetKey/SetIV 方法 (執行時可變更)
-   - c) 支援 IOptions / DI 配置
-   - d) 支援靜態全域設定
+   - c) 支援 IOptions / DI 配置 (供 ASP.NET 或 DI 容器注入)
+   - d) 支援靜態/寫死設定 (直接在類別庫內以 private 欄位設定)
 
-- 回答:提供 private 屬性給開發人員自己做設定，直接寫死在專案中
+2) Key / IV 的輸入格式（擇一）
+   - a) 16/32 bytes 的 byte[]
+   - b) Hex 字串 (小寫或大寫皆可)
+   - c) Base64 字串
+
+3) 日誌/錯誤輸出（擇一）
+   - a) 僅 Console.WriteLine（符合規格：將錯誤列印在 Console）
+   - b) 支援 Microsoft.Extensions.Logging.ILogger<T>（預設仍列印 Console）
+
+4) 是否需要提供 Key/IV 產生器或範例程式碼？
+   - a) 需要（提供靜態 helper 產生安全亂數 Key/IV 範例）
+   - b) 不需要
+
+5) 測試需求（擇一）
+   - a) 建立 NUnit 測試專案，包含基本 Encrypt/Decrypt 與錯誤情境測試
+   - b) 僅保留程式庫，不新增測試專案
+
+使用者回答:
+1:d
+2:單純的字串
+3.a
+4.b
+5:a
 ```

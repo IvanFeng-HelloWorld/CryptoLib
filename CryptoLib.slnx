@@ -5,6 +5,8 @@
   <Folder Name="/方案項目/">
     <File Path=".github/instruction.md" />
     <File Path="agent.md" />
+    <File Path="README.md" />
   </Folder>
+  <Project Path="CryptoLib.Tests/CryptoLib.Tests.csproj" />
   <Project Path="CryptoLib/CryptoLib.csproj" />
 </Solution>
