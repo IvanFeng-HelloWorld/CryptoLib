@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/specs/">
     <File Path="specs/AES256_Crypto_Library.md" />
+    <File Path="specs/Obfuscar.md" />
   </Folder>
   <Folder Name="/方案項目/">
     <File Path=".github/instruction.md" />

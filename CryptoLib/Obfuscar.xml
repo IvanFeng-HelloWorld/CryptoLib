@@ -3,5 +3,5 @@
   <Var name="InPath" value=".\bin\Debug\net10.0\" />
   <Var name="OutPath" value=".\bin\Debug\net10.0\obfuscated" />
 
-  <Module file="$(InPath)\AesCryptoLib.dll" />
+  <Module file="$(InPath)\Aes256CryptoLib.dll" />
 </Obfuscator>
