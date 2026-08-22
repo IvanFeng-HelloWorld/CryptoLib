@@ -17,13 +17,13 @@ dotnet test
 使用範例
 --
 ```csharp
-using CryptoLib;
+using Aes256CryptoLib;
 
 // 使用專案內預設的 Key/IV（請在打包前替換為專案專屬值）
-var svc = new AesCryptoService();
+var svc = new Aes256CryptoService();
 
 // 或：以字串建構式注入（建議用於測試或從安全來源載入）
-var svc2 = new AesCryptoService("01234567890123456789012345678901", "0123456789012345");
+var svc2 = new Aes256CryptoService("01234567890123456789012345678901", "0123456789012345");
 
 var cipher = svc2.Encrypt("my-secret-api-key");
 var plain = svc2.Decrypt(cipher);
@@ -31,13 +31,28 @@ var plain = svc2.Decrypt(cipher);
 
 重要說明
 --
-- AesCryptoService 預設在程式碼內提供 placeholder 的 Key/IV（位於 CryptoLib/AesCryptoService.cs），請在打包為 DLL 前以安全方式替換為專案專屬的金鑰或改用建構式注入 / 環境變數 / DI (IOptions)。
+- AesCryptoService 預設在程式碼內提供 placeholder 的 Key/IV（位於 Aes256CryptoLib/Aes256CryptoService.cs），請在打包為 DLL 前以安全方式替換為專案專屬的金鑰或改用建構式注入 / 環境變數 / DI (IOptions)。
 - 根據 specs，當加解密發生任何錯誤時，函式會捕捉例外、以 Console.WriteLine 記錄錯誤，並回傳輸入的原始字串；不會拋出例外以避免呼叫端崩潰。
 
 測試
 --
-測試專案位於 CryptoLib.Tests，包含基本的 Encrypt/Decrypt 與錯誤情境測試。
+測試專案位於 Aes256CryptoLib.Tests，包含基本的 Encrypt/Decrypt 與錯誤情境測試。
 
 目標環境
 --
 - .NET 10
+
+混淆 (Obfuscar)
+--
+- 本 repository 已納入 .NET local tool 管理的 Obfuscar 設定（檔案：`.config/dotnet-tools.json`）。請不要以 global 方式安裝 Obfuscar。
+- 本地執行範例（於 repo 根目錄）：
+
+```powershell
+dotnet tool restore
+cd Aes256CryptoLib
+dotnet build -c Release
+dotnet tool run obfuscar.console .\Obfuscar.xml
+```
+
+- 預設 Obfuscar 設定檔位於 `Aes256CryptoLib/Obfuscar.xml`，預設 InPath/OutPath 指向 `./bin/Release/net10.0` 與 `./bin/Release/net10.0/obfuscated`。若需要修改輸出或目標 DLL 名稱，請更新該檔案。
+- CI 注意：在 Release 發佈流程中加入 `dotnet tool restore` 與執行 Obfuscar 的步驟；切勿依賴系統已安裝的 global tool。
